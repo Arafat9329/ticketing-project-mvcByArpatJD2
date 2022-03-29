@@ -10,7 +10,7 @@ public class UserServiceImpl extends AbstractMapService<UserDTO,String> implemen
 
     @Override
     public UserDTO save(UserDTO object) {
-        return super.save(object.getUserName(), object);
+        return super.save(object.getUserName(),object);
     }
 
     @Override
@@ -19,17 +19,12 @@ public class UserServiceImpl extends AbstractMapService<UserDTO,String> implemen
     }
 
     @Override
-    public void deleted(UserDTO object) {
-        super.deleteByid(object.getUserName());
+    public void deleteById(String id) {
+        super.deleteByid(id);
     }
 
     @Override
-    public void deletedById(String s) {
-
-    }
-
-    @Override
-    public UserDTO findByID(String id) {
+    public UserDTO findById(String id) {
         return super.findByID(id);
     }
 }

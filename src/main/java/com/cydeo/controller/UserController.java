@@ -19,10 +19,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create")//http://localhost:8080/login
     public String createUser(Model model){
         model.addAttribute("user", new UserDTO());
         model.addAttribute("roles",roleService.findAll());
+        model.addAttribute("users",userService.findAll());
 
         return "/user/create";
     }
