@@ -57,6 +57,16 @@ public class UserController {
         return "redirect:/user/create";
     }
 
+    @GetMapping("/delete/{username}")//http://localhost:8080/delete
+    public String deleteUser(@PathVariable("username")String username){
+
+        userService.deleteById(username);
+
+        return "redirect:/user/create";
+    }
+
+
+
 
 
 
