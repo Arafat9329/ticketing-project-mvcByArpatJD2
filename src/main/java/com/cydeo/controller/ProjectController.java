@@ -1,6 +1,7 @@
 package com.cydeo.controller;
 
 import com.cydeo.dto.ProjectDTO;
+import com.cydeo.service.ProjectService;
 import com.cydeo.service.RoleService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -13,14 +14,21 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
-    RoleService roleService;
+
+    ProjectService projectService;
     UserService userService;
+
+    public ProjectController(ProjectService projectService, UserService userService) {
+        this.projectService = projectService;
+        this.userService = userService;
+    }
 
     @GetMapping("/create")//http://localhost:8080/project/create
     public String createProject(Model model) {
 
         model.addAttribute("project", new ProjectDTO());
-        model.addAttribute("assignedManager", roleService.findAll());
+        model.addAttribute("projectList", projectService.findAll());
+        model.addAttribute("assignedManager", userService.findAll());
 
         return "/project/create";
     }

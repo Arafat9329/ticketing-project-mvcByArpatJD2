@@ -54,7 +54,8 @@
                                                 <div class="form-group">
                                                     <label>Assigned Manager</label>
                                                     <select name="assignedmanager" class="custom-select" th:filed="*{projectAssignedManager}">
-                                                        <option></option>
+                                                        <option th:value="''" th:text="Seletet"></option>
+                                                        <option th:each="eachManager : ${assignedManager}" th:value="${eachManager.userName}" th:text="${eachManager.firstName+' '+eachManager.lastName}"></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -116,7 +117,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
-                                            <tr>
+                                                <tr>
                                                 <th scope="col">Project Code</th>
                                                 <th scope="col">Project Name</th>
                                                 <th scope="col">Start - End Date</th>
@@ -126,12 +127,12 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                            <tr th:each="eachProject : ${projectList}">
+                                                <td th:text="${eachProject.projectCode}"></td>
+                                                <td th:text="${eachProject.projectName}"></td>
+                                                <td th:text="${eachProject.projectStartDate}"></td>
+                                                <td th:text="${eachProject.projectAssignedManager.getRole().getDescription()}"></td>
+                                                <td th:text="${eachProject.projectStatus}"></td>
                                                 <td>
                                                     <a href="#"><button type="button" class="btn btn-warning rounded-0">Update</button></a>
                                                     <a href="#"><button type="button" class="btn btn-danger rounded-0">Delete</button></a>
