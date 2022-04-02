@@ -19,16 +19,17 @@ public class UserController {
     }
 
     @GetMapping("/create")//http://localhost:8080/login
-    public String createUser(Model model){
+    public String createUser(Model model) {
+
         model.addAttribute("user", new UserDTO());
-        model.addAttribute("roles",roleService.findAll());
-        model.addAttribute("users",userService.findAll());
+        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("users", userService.findAll());
 
         return "/user/create";
     }
 
     @PostMapping("/create")//http://localhost:8080/create
-    public String insertUser(@ModelAttribute("user")UserDTO user, Model model){
+    public String insertUser(@ModelAttribute("user") UserDTO user, Model model) {
 
 
         userService.save(user);
@@ -38,19 +39,19 @@ public class UserController {
     }
 
     @GetMapping("/update/{username}")//http://localhost:8080/update
-    public String editUSer(@PathVariable("username")String username, Model model){
+    public String editUSer(@PathVariable("username") String username, Model model) {
 
 
         model.addAttribute("user", userService.findById(username));
-        model.addAttribute("roles",roleService.findAll());
-        model.addAttribute("users",userService.findAll());
+        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("users", userService.findAll());
 
 
         return "/user/update";
     }
 
     @PostMapping("/update")//http://localhost:8080/update
-    public String updateUser(UserDTO user){
+    public String updateUser(UserDTO user) {
 
         userService.update(user);
 
@@ -58,17 +59,11 @@ public class UserController {
     }
 
     @GetMapping("/delete/{username}")//http://localhost:8080/delete
-    public String deleteUser(@PathVariable("username")String username){
+    public String deleteUser(@PathVariable("username") String username) {
 
         userService.deleteById(username);
 
         return "redirect:/user/create";
     }
-
-
-
-
-
-
 
 }
