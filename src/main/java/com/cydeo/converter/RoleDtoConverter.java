@@ -1,4 +1,4 @@
-package com.cydeo.conventor;
+package com.cydeo.converter;
 
 import com.cydeo.dto.RoleDTO;
 import com.cydeo.service.RoleService;
@@ -6,13 +6,15 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesBindin
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+
 @Component
 @ConfigurationPropertiesBinding
-public class RoleDtoConvention implements Converter<String, RoleDTO> {
+public class RoleDtoConverter implements Converter<String, RoleDTO> {
 
     RoleService roleService;
 
-    public RoleDtoConvention(RoleService roleService) {
+    //injection
+    public RoleDtoConverter(RoleService roleService) {
         this.roleService = roleService;
     }
 
