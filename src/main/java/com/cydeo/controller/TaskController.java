@@ -29,7 +29,7 @@ public class TaskController {
 
         model.addAttribute("task",new TaskDTO());
         model.addAttribute("projects",projectService.findAll());
-        model.addAttribute("users",userService.findAll());
+        model.addAttribute("users",userService.findEmployee());
 
         return "task/create";
     }
