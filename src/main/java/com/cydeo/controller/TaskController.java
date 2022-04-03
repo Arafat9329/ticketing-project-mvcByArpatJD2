@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/task")//http://localhost:8080/task
 public class TaskController {
 
-    TaskService taskService;
     UserService userService;
     ProjectService projectService;
+    TaskService taskService;
 
     public TaskController(TaskService taskService, UserService userService, ProjectService projectService) {
         this.taskService = taskService;
@@ -30,6 +30,7 @@ public class TaskController {
         model.addAttribute("task",new TaskDTO());
         model.addAttribute("projects",projectService.findAll());
         model.addAttribute("users",userService.findEmployee());
+        model.addAttribute("tasks",taskService.findAll());
 
         return "task/create";
     }
