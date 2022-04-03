@@ -31,7 +31,8 @@ public class ProjectController {
     }
 
     @PostMapping("/create")
-    public String insertUser(@ModelAttribute("project") ProjectDTO project, Model model) {
+//    public String insertUser(@ModelAttribute("project") ProjectDTO project) {
+    public String insertUser(ProjectDTO project) {//in new sprint framework updated, we don't need put @ModelAttribute("project")
 
         projectService.save(project);
 
