@@ -43,7 +43,6 @@ public class TaskController {
 
     }
 
-
     @GetMapping("/update/{taskId}")
     public String editTask(@PathVariable("taskId") Long taskId, Model model){
 
