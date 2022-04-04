@@ -54,10 +54,10 @@ public class TaskController {
         return "task/update";
     }
 
-    @PostMapping("/update/{taskId}")
-    public String updateTask(@PathVariable("taskId")Long taskId, TaskDTO task){
+    @PostMapping("/update/{id}")//if you give same variable name that in POJO class, you don't need to give/mention @PathVariable
+//    public String updateTask(@PathVariable("taskId")Long taskId, TaskDTO task){
+    public String updateTask(TaskDTO task){
 
-        task.setId(taskId);
         taskService.update(task);
 
         return "redirect:/task/create";
